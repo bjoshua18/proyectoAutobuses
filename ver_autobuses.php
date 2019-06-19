@@ -1,5 +1,7 @@
 <?php
 include("funciones.php");
+
+$menu = menu();
 $resultado = verAutobuses();
 ?>
 
@@ -17,6 +19,16 @@ $resultado = verAutobuses();
 		<h1><img src="images/logo.png" alt="Logo"/></h1>
 		<h2>Ver Autobuses</h2>
 	</header>
-	<p><?= $resultado ?></p>
+	<nav>
+		<ul>
+			<?= $menu ?>
+		</ul>
+	</nav>
+	<section>
+		<?= $resultado ?>
+	</section>
+	<article id="ver_autobuses">
+		<img src="images/autobus.png" alt="autobus">
+	</article>
 </body>
 </html>
