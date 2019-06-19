@@ -1,8 +1,7 @@
 <?php
 include("funciones.php");
 
-$menu = menu(2);
-$resultado = verAutobuses();
+$menu = menu(1);
 ?>
 
 <!DOCTYPE html>
@@ -11,27 +10,32 @@ $resultado = verAutobuses();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Ver autobuses</title>
+	<title>Alta autobuses</title>
 	<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 	<header>
 		<h1><img src="images/logo.png" alt="Logo"/></h1>
-		<h2>Ver Autobuses</h2>
+		<h2>Alta Autobuses</h2>
 	</header>
 	<nav>
 		<ul>
 			<?= $menu ?>
 		</ul>
 	</nav>
-	<section>
-		<?= $resultado ?>
-	</section>
-	<article id="ver_autobuses">
+	<form action="">
+		<label for="nombre">Nombre</label>
+		<input type="text" name="nombre" id="nombre"/>
+
+		<label for="color">Color</label>
+		<input type="text" name="color" id="color"/>
+		
+		<label for="capacidad">Capacidad</label>
+		<input type="text" name="capacidad" id="capacidad"/>
+		<input type="submit" value="Dar de Alta"/>
+	</form>
+	<article id="autobus">
 		<img src="images/autobus.png" alt="autobus">
 	</article>
-	<div class="nuevobus">
-		<a href="alta_autobuses.php"><img src="images/nuevobus.png" alt="Dar de alta autobus"></a>
-	</div>
 </body>
 </html>
