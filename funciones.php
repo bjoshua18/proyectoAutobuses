@@ -3,6 +3,10 @@
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DBMySql.php");
 
+if(isset($_POST['alta'])) {
+	altaAutobus();
+}
+
 function conexionBD($consulta) {
 	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
 	$valor = $dbLocal->setQuery($consulta);
@@ -19,6 +23,11 @@ function menu($num) {
 		<li><a href='alta_conductores.php' class='{$active[3]}'>Alta Conductores</a></li>
 		<li><a href='ver_conductores.php' class='{$active[4]}'>Ver Conductores</a></li>
 	";
+}
+
+function altaAutobus() {
+	echo 'funcion alta';
+	// 13:30
 }
 
 function verAutobuses() {

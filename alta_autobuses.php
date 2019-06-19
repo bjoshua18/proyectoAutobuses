@@ -23,7 +23,7 @@ $menu = menu(1);
 			<?= $menu ?>
 		</ul>
 	</nav>
-	<form action="">
+	<form method="post" action="">
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre"/>
 
@@ -32,7 +32,9 @@ $menu = menu(1);
 		
 		<label for="capacidad">Capacidad</label>
 		<input type="text" name="capacidad" id="capacidad"/>
-		<input type="submit" value="Dar de Alta"/>
+		<input type="submit" value="Dar de Alta" name="alta"/>
+
+		<div class="clearfix"></div>
 	</form>
 	<article id="autobus">
 		<img src="images/autobus.png" alt="autobus">
