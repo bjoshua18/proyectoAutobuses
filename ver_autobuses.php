@@ -30,5 +30,8 @@ $resultado = verAutobuses();
 	<article id="ver_autobuses">
 		<img src="images/autobus.png" alt="autobus">
 	</article>
+	<div class="nuevobus">
+		<a href="alta_autobuses.php"><img src="images/nuevobus.png" alt="Dar de alta autobus"></a>
+	</div>
 </body>
 </html>

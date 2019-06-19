@@ -35,6 +35,39 @@ h2{
 	margin-top:75px;
 }
 
+nav{
+	width:100%;
+	margin-top:-20px;
+	float:left;
+	border-bottom:3px solid rgba(98,98,98,0.30)
+}
+
+nav ul{
+	width:100%;
+	list-style:none;
+}
+
+nav ul li{
+	width:20%;
+	float:left;
+	box-sizing:border-box;
+	border-right:1px solid #fff;
+}
+
+nav ul li:last-child{
+	border-right:none;
+}
+
+nav ul li a{
+	background:rgba(90,174,3,1.00);
+	color:#fff;
+	padding:0.7em 0;
+	font-size:1em;
+	display:block;
+	text-align:center;
+	text-decoration:none;
+}
+
 section{
 	width:50%;
 	max-width:450px;
@@ -82,4 +115,17 @@ article#ver_autobuses{
 
 article#ver_autobuses img{
 	width:100%;
+}
+
+.nuevobus{
+	position:fixed;
+	right:2%;
+	bottom:2%;
+	background:#fff;
+	padding:0.5em;
+}
+
+.editar{
+	float:right;
+	margin-right:20px;
 }
