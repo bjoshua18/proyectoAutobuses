@@ -15,11 +15,7 @@ class DBMySql extends BaseDeDatos {
 	}
 
 	public function queryToArray() {
-		$array = [];
-		for ($i=1; $i <= $this->idConsulta->num_rows; $i++) 
-			array_push($array, mysqli_fetch_assoc($this->idConsulta));
-		
-		return $array;
+		return mysqli_fetch_assoc($this->idConsulta);
 	}
 
 	public function __destruct() {

@@ -5,20 +5,20 @@ include("bbdd/DBMySql.php");
 
 function conexionBD($consulta) {
 	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
-	$dbLocal->setQuery($consulta);
+	$valor = $dbLocal->setQuery($consulta);
 
-	return $dbLocal;
+	return $valor;
 }
 
 function verAutobuses() {
-	$dbLocal = conexionBD("SELECT * FROM autobuses");
-	$buses = $dbLocal->queryToArray();
+	$buses = conexionBD("SELECT * FROM autobuses");
+	
 	$result = "";
-	for ($i=0; $i < count($buses); $i++) { 
+	while ($bus = mysqli_fetch_assoc($buses)) { 
 		$result .= "
-			Nombre: {$buses[$i]['nombre']}<br/>
-			Color: {$buses[$i]['color']}<br/>
-			Capacidad: {$buses[$i]['capacidad']}<br/>
+			Nombre: {$bus['nombre']}<br/>
+			Color: {$bus['color']}<br/>
+			Capacidad: {$bus['capacidad']}<br/>
 			<br/>
 		";
 	}
