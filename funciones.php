@@ -10,15 +10,15 @@ function conexionBD($consulta) {
 	return $valor;
 }
 
-function menu() {
+function menu($num) {
+	$active = getActiveSection($num);
 	return "
-		<li><a href='index.php'>Inicio</a></li>
-		<li><a href='alta_autobuses.php'>Alta Autobuses</a></li>
-		<li><a href='ver_autobuses.php'>Ver autobuses</a></li>
-		<li><a href='alta_conductores.php'>Alta Conductores</a></li>
-		<li><a href='ver_conductores.php'>Ver Conductores</a></li>
+		<li><a href='index.php' class='{$active[0]}'>Inicio</a></li>
+		<li><a href='alta_autobuses.php' class='{$active[1]}'>Alta Autobuses</a></li>
+		<li><a href='ver_autobuses.php' class='{$active[2]}'>Ver autobuses</a></li>
+		<li><a href='alta_conductores.php' class='{$active[3]}'>Alta Conductores</a></li>
+		<li><a href='ver_conductores.php' class='{$active[4]}'>Ver Conductores</a></li>
 	";
-	
 }
 
 function verAutobuses() {
@@ -34,4 +34,12 @@ function verAutobuses() {
 	}
 
 	return $result;
+}
+
+function getActiveSection($num) {
+	$active = ['', '', '', '', ''];
+	for ($i=0; $i < count($active); $i++)
+		if($num === $i)
+			$active[$i] = 'active';
+	return $active;
 }

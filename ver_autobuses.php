@@ -1,7 +1,7 @@
 <?php
 include("funciones.php");
 
-$menu = menu();
+$menu = menu(2);
 $resultado = verAutobuses();
 ?>
 
