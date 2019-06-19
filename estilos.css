@@ -82,6 +82,18 @@ section{
 	box-sizing:border-box;
 }
 
+/* ALTA AUTOBUSES */
+article#autobus{
+	position:absolute;
+	width:350px;
+	bottom:20px;
+}
+
+article#autobus img{
+	width:100%;
+}
+
+
 /* VER AUTOBUSES */
 
 h3{
