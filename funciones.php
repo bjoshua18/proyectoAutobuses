@@ -8,6 +8,10 @@ if(isset($_POST['alta'])) {
 	altaAutobus();
 }
 
+if(isset($_POST['editar'])) {
+	editarAutobus();
+}
+
 function conexionBD($consulta) {
 	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
 	$valor = $dbLocal->setQuery($consulta);
@@ -51,6 +55,10 @@ function cargarAutobusEditar($id) {
 	$consulta = "SELECT * FROM autobuses WHERE id=$id";
 	$valor = conexionBD($consulta);
 	return mysqli_fetch_assoc($valor);
+}
+
+function editarAutobus() {
+	echo 'Editando...';
 }
 
 function getActiveSection($num) {

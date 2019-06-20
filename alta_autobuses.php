@@ -23,7 +23,7 @@ $menu = menu(2);
 			<?= $menu ?>
 		</ul>
 	</nav>
-	<form method="post" action="">
+	<form method="post" action="funciones.php">
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre"/>
 
