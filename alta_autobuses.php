@@ -32,6 +32,7 @@ $menu = menu(1);
 		
 		<label for="capacidad">Capacidad</label>
 		<input type="text" name="capacidad" id="capacidad"/>
+		
 		<input type="submit" value="Dar de Alta" name="alta"/>
 
 		<div class="clearfix"></div>

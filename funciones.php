@@ -2,6 +2,7 @@
 
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DBMySql.php");
+include("clases/Autobus.php");
 
 if(isset($_POST['alta'])) {
 	altaAutobus();
@@ -26,8 +27,11 @@ function menu($num) {
 }
 
 function altaAutobus() {
-	echo 'funcion alta';
-	// 13:30
+	$autobus = new Autobus($_POST['nombre'], $_POST['color'], $_POST['capacidad']);
+	$consulta = "INSERT INTO autobuses (nombre, color, capacidad) 
+		VALUES ('{$autobus->getNombre()}', '{$autobus->getColor()}', '{$autobus->getCapacidad()}')";
+	conexionBD($consulta);
+	header('Location:ver_autobuses.php');
 }
 
 function verAutobuses() {
