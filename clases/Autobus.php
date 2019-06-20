@@ -42,4 +42,9 @@ class Autobus {
 			Capacidad: $this->capacidad<br/>
 		";
 	}
+
+	public function darDeAlta() {
+		return "INSERT INTO autobuses (nombre, color, capacidad) 
+		VALUES ('{$this->getNombre()}', '{$this->getColor()}', '{$this->getCapacidad()}')";
+	}
 }

@@ -107,6 +107,12 @@ form input[type=submit]{
 	color:#fff;
 	float:right;
 	text-align:center;
+	cursor:pointer;
+}
+
+input.boton_editar{
+	float:left !important;
+	margin-left:180px;
 }
 
 .clearfix{
@@ -115,13 +121,27 @@ form input[type=submit]{
 
 /* ALTA AUTOBUSES */
 article#autobus{
-	position:absolute;
+	position:fixed;
 	width:350px;
 	bottom:20px;
+	animation-name:Autobus;
+	animation-duration:1.5s;
+	animation-iteration-count:1;
+	animation-fill-mode:forwards;
+	animation-timing-function:ease-out;
 }
 
 article#autobus img{
 	width:100%;
+}
+
+@keyframes Autobus{
+	0%{
+		right:-400px;
+	}
+	100%{
+		right:70%;
+	}
 }
 
 
@@ -178,15 +198,18 @@ article#ver_autobuses img{
 	margin-right:20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.borrar{
+	width:25%;
+	height:40px;
+	font-size:1em;
+	border:none;
+	background:rgba(219,81,29,1.00);
+	color:#fff;
+	margin-left:1%;
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	line-height:40px;
+	float:right;
+	margin-top:10px;
+}

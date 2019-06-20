@@ -28,9 +28,7 @@ function menu($num) {
 
 function altaAutobus() {
 	$autobus = new Autobus($_POST['nombre'], $_POST['color'], $_POST['capacidad']);
-	$consulta = "INSERT INTO autobuses (nombre, color, capacidad) 
-		VALUES ('{$autobus->getNombre()}', '{$autobus->getColor()}', '{$autobus->getCapacidad()}')";
-	conexionBD($consulta);
+	conexionBD($autobus->darDeAlta());
 	header('Location:ver_autobuses.php');
 }
 
@@ -49,10 +47,16 @@ function verAutobuses() {
 	return $result;
 }
 
+function cargarAutobusEditar($id) {
+	$consulta = "SELECT * FROM autobuses WHERE id=$id";
+	$valor = conexionBD($consulta);
+	return mysqli_fetch_assoc($valor);
+}
+
 function getActiveSection($num) {
 	$active = ['', '', '', '', ''];
 	for ($i=0; $i < count($active); $i++)
-		if($num === $i)
+		if(($num - 1) === $i)
 			$active[$i] = 'active';
 	return $active;
 }
