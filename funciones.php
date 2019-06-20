@@ -2,6 +2,15 @@
 
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DBMySql.php");
+include("clases/Autobus.php");
+
+if(isset($_POST['alta'])) {
+	altaAutobus();
+}
+
+if(isset($_POST['editar'])) {
+	editarAutobus();
+}
 
 function conexionBD($consulta) {
 	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
@@ -21,6 +30,12 @@ function menu($num) {
 	";
 }
 
+function altaAutobus() {
+	$autobus = new Autobus($_POST['nombre'], $_POST['color'], $_POST['capacidad']);
+	conexionBD($autobus->darDeAlta());
+	header('Location:ver_autobuses.php');
+}
+
 function verAutobuses() {
 	$buses = conexionBD("SELECT * FROM autobuses");
 	
@@ -36,10 +51,20 @@ function verAutobuses() {
 	return $result;
 }
 
+function cargarAutobusEditar($id) {
+	$consulta = "SELECT * FROM autobuses WHERE id=$id";
+	$valor = conexionBD($consulta);
+	return mysqli_fetch_assoc($valor);
+}
+
+function editarAutobus() {
+	echo 'Editando...';
+}
+
 function getActiveSection($num) {
 	$active = ['', '', '', '', ''];
 	for ($i=0; $i < count($active); $i++)
-		if($num === $i)
+		if(($num - 1) === $i)
 			$active[$i] = 'active';
 	return $active;
 }
