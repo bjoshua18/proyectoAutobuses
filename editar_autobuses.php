@@ -30,6 +30,7 @@ $datos_bus = cargarAutobusEditar($id);
 		</ul>
 	</nav>
 	<form method="post" action="funciones.php">
+		<input type="hidden" name="id" value="<?= $id ?>">
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre" value="<?= $datos_bus['nombre'] ?>"/>
 

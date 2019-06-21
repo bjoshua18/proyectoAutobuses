@@ -12,6 +12,10 @@ if(isset($_POST['editar'])) {
 	editarAutobus();
 }
 
+if(isset($_GET['borrar'])) {
+	borrarAutobus($_GET['borrar']);
+}
+
 function conexionBD($consulta) {
 	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
 	$valor = $dbLocal->setQuery($consulta);
@@ -58,7 +62,27 @@ function cargarAutobusEditar($id) {
 }
 
 function editarAutobus() {
-	echo 'Editando...';
+	$id = htmlentities($_POST['id']);
+	$nombre = htmlentities($_POST['nombre']);
+	$color = htmlentities($_POST['color']);
+	$capacidad = htmlentities($_POST['capacidad']);
+
+	$consulta = "
+	UPDATE autobuses 
+		SET 
+			nombre='$nombre', 
+			color='$color', 
+			capacidad='$capacidad'
+		WHERE id=$id";
+
+	conexionBD($consulta);
+	header("Location:editar_autobuses.php?id=$id");
+}
+
+function borrarAutobus($id) {
+	$consulta = "DELETE FROM autobuses WHERE id=$id";
+	conexionBD($consulta);
+	header("Location:ver_autobuses.php");
 }
 
 function getActiveSection($num) {
