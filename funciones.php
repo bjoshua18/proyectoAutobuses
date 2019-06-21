@@ -3,9 +3,10 @@
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DBMySql.php");
 include("clases/Autobus.php");
+include("clases/Validacion.php");
 
 if(isset($_POST['alta'])) {
-	altaAutobus();
+	validaAltaAutobus();
 }
 
 if(isset($_POST['editar'])) {
@@ -34,8 +35,29 @@ function menu($num) {
 	";
 }
 
-function altaAutobus() {
-	$autobus = new Autobus($_POST['nombre'], $_POST['color'], $_POST['capacidad']);
+function validaAltaAutobus() {
+	$nombre = validarString($_POST['nombre']);
+	$color = validarString($_POST['color']);
+	$capacidad = validarString($_POST['capacidad']);
+
+	if($nombre === null && $color === null && $capacidad===null)
+		header("Location:alta_autobuses.php?error=string");
+	else
+		altaAutobus($nombre, $color, $capacidad);
+}
+
+function validarString($string) {
+	$val = new Validacion();
+	$error = $val->validaTexto($string, false, false, true, "Introduce un texto correcto");
+	if($error === true)
+		return $string;
+	else
+	return null;
+		
+}
+
+function altaAutobus($nombre, $color, $capacidad) {
+	$autobus = new Autobus($nombre, $color, $capacidad);
 	conexionBD($autobus->darDeAlta());
 	header('Location:ver_autobuses.php');
 }

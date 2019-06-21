@@ -2,6 +2,11 @@
 include("funciones.php");
 
 $menu = menu(2);
+
+// Gestión errores de validación
+$error = '';
+if(isset($_GET['error']))
+	$error = 'Debe escribir todos los campos correctamente';
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +39,8 @@ $menu = menu(2);
 		<input type="text" name="capacidad" id="capacidad"/>
 		
 		<input type="submit" value="Dar de Alta" name="alta"/>
+
+		<p style="color:red"><?= $error ?></p>
 
 		<div class="clearfix"></div>
 	</form>
