@@ -30,6 +30,7 @@ $datos_bus = cargarAutobusEditar($id);
 		</ul>
 	</nav>
 	<form method="post" action="funciones.php">
+		<input type="hidden" name="id" value="<?= $id ?>">
 		<label for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre" value="<?= $datos_bus['nombre'] ?>"/>
 
@@ -39,7 +40,7 @@ $datos_bus = cargarAutobusEditar($id);
 		<label for="capacidad">Capacidad</label>
 		<input type="text" name="capacidad" id="capacidad" value="<?= $datos_bus['capacidad'] ?>"/>
 		
-		<input type="submit" value="Guardar" name="editar"/>
+		<input type="submit" value="Guardar" name="editar" class="editar" />
 		<a href="funciones.php?borrar=<?= $id ?>" class="borrar">Eliminar</a>
 
 		<div class="clearfix"></div>

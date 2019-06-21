@@ -3,13 +3,18 @@
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DBMySql.php");
 include("clases/Autobus.php");
+include("clases/Validacion.php");
 
 if(isset($_POST['alta'])) {
-	altaAutobus();
+	validaAltaAutobus();
 }
 
 if(isset($_POST['editar'])) {
 	editarAutobus();
+}
+
+if(isset($_GET['borrar'])) {
+	borrarAutobus($_GET['borrar']);
 }
 
 function conexionBD($consulta) {
@@ -30,8 +35,29 @@ function menu($num) {
 	";
 }
 
-function altaAutobus() {
-	$autobus = new Autobus($_POST['nombre'], $_POST['color'], $_POST['capacidad']);
+function validaAltaAutobus() {
+	$nombre = validarString($_POST['nombre']);
+	$color = validarString($_POST['color']);
+	$capacidad = validarString($_POST['capacidad']);
+
+	if($nombre === null && $color === null && $capacidad===null)
+		header("Location:alta_autobuses.php?error=string");
+	else
+		altaAutobus($nombre, $color, $capacidad);
+}
+
+function validarString($string) {
+	$val = new Validacion();
+	$error = $val->validaTexto($string, false, false, true, "Introduce un texto correcto");
+	if($error === true)
+		return $string;
+	else
+	return null;
+		
+}
+
+function altaAutobus($nombre, $color, $capacidad) {
+	$autobus = new Autobus($nombre, $color, $capacidad);
 	conexionBD($autobus->darDeAlta());
 	header('Location:ver_autobuses.php');
 }
@@ -58,7 +84,27 @@ function cargarAutobusEditar($id) {
 }
 
 function editarAutobus() {
-	echo 'Editando...';
+	$id = htmlentities($_POST['id']);
+	$nombre = htmlentities($_POST['nombre']);
+	$color = htmlentities($_POST['color']);
+	$capacidad = htmlentities($_POST['capacidad']);
+
+	$consulta = "
+	UPDATE autobuses 
+		SET 
+			nombre='$nombre', 
+			color='$color', 
+			capacidad='$capacidad'
+		WHERE id=$id";
+
+	conexionBD($consulta);
+	header("Location:editar_autobuses.php?id=$id");
+}
+
+function borrarAutobus($id) {
+	$consulta = "DELETE FROM autobuses WHERE id=$id";
+	conexionBD($consulta);
+	header("Location:ver_autobuses.php");
 }
 
 function getActiveSection($num) {
