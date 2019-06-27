@@ -2,7 +2,7 @@
 include("BaseDeDatos.php");
 include("DBMySql.php");
 
-$dblocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
+$dblocal = new DBMySql('localhost', 'root', '', 'bus', 3306, 'mysql');
 $dblocal->setQuery('SELECT * FROM autobuses');
 
 $dblocal->verConfiguracion();

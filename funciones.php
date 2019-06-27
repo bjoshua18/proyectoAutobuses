@@ -18,7 +18,7 @@ if(isset($_GET['borrar'])) {
 }
 
 function conexionBD($consulta) {
-	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
+	$dbLocal = new DBMySql('localhost', 'root', '', 'bus', 3306, 'mysql');
 	$valor = $dbLocal->setQuery($consulta);
 
 	return $valor;
@@ -58,10 +58,10 @@ function validarString($string) {
 
 function altaAutobus($nombre, $color, $capacidad) {
 	$autobus = new Autobus($nombre, $color, $capacidad);
-	conexionBD($autobus->darDeAlta());
-	header('Location:ver_autobuses.php');
+	return conexionBD($autobus->darDeAlta());
 }
 
+// Para AJAX no lo utilizo
 function verAutobuses() {
 	$buses = conexionBD("SELECT * FROM autobuses");
 	
@@ -83,11 +83,11 @@ function cargarAutobusEditar($id) {
 	return mysqli_fetch_assoc($valor);
 }
 
-function editarAutobus() {
-	$id = htmlentities($_POST['id']);
-	$nombre = htmlentities($_POST['nombre']);
-	$color = htmlentities($_POST['color']);
-	$capacidad = htmlentities($_POST['capacidad']);
+function editarAutobus($datos) {
+	$id = htmlentities($datos['id']);
+	$nombre = htmlentities($datos['nombre']);
+	$color = htmlentities($datos['color']);
+	$capacidad = htmlentities($datos['capacidad']);
 
 	$consulta = "
 	UPDATE autobuses 
@@ -97,14 +97,12 @@ function editarAutobus() {
 			capacidad='$capacidad'
 		WHERE id=$id";
 
-	conexionBD($consulta);
-	header("Location:editar_autobuses.php?id=$id");
+	return conexionBD($consulta);
 }
 
 function borrarAutobus($id) {
 	$consulta = "DELETE FROM autobuses WHERE id=$id";
-	conexionBD($consulta);
-	header("Location:ver_autobuses.php");
+	return conexionBD($consulta);
 }
 
 function getActiveSection($num) {
