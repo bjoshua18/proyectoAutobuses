@@ -212,9 +212,26 @@ article#ver_autobuses img {
 	padding: 0.5em;
 }
 
-.editarBus {
+.editarBus, .borrarBus {
 	float: right;
-	margin-right: 20px;
+	margin-right: 10px;
+	text-decoration: none;
+}
+
+.editarBus {
+	color: rgb(7, 75, 165);
+}
+
+.borrarBus {
+	color: rgb(187, 5, 5);
+}
+
+.editarBus:hover {
+	color: rgb(4, 100, 226);
+}
+
+.borrarBus:hover {
+	color: rgb(241, 9, 9);
 }
 
 #btn-cancelar {

@@ -102,8 +102,7 @@ function editarAutobus($datos) {
 
 function borrarAutobus($id) {
 	$consulta = "DELETE FROM autobuses WHERE id=$id";
-	conexionBD($consulta);
-	header("Location:ver_autobuses.php");
+	return conexionBD($consulta);
 }
 
 function getActiveSection($num) {

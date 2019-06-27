@@ -18,7 +18,11 @@ $(document).ready(() => {
 				buses.forEach(bus => {
 					result += `
 					<div class="autobus" busid="${bus.id}">
-						<h3>Nombre: <span>${bus.nombre}</span><a href='#' class='editarBus'><img src='images/editar.png'/></a></h3>
+						<h3>
+							Nombre: <span>${bus.nombre}</span>
+							<a href='#' class='borrarBus'>Borrar</a>
+							<a href='#' class='editarBus'>Editar</a>
+						</h3>
 						<h4>Color: <span>${bus.color}</span></h4>
 						<h4>Capacidad: <span>${bus.capacidad}</span></h4>
 					</div>
@@ -52,7 +56,7 @@ $(document).ready(() => {
 
 	// Editar autobus
 	$(document).on('click', '.editarBus', (e) => {
-		let element = e.target.parentElement.parentElement.parentElement // Obtenemos el elemento que tiene el id del bus
+		let element = e.target.parentElement.parentElement // Obtenemos el elemento que tiene el id del bus
 		let id = $(element).attr('busid')
 		
 		$.post('mostrar_autobus.php', {id}, response => {
@@ -65,6 +69,15 @@ $(document).ready(() => {
 			editBus = true
 		})
 		e.preventDefault() // Evitar recarga
+	})
+
+	$(document).on('click', '.borrarBus', e => {
+		if(confirm("¿Estás seguro/a que quieres eliminarlo?")) {
+			let element = e.target.parentElement.parentElement
+			let id = $(element).attr('busid')
+			$.post('eliminar_autobus.php', {id}, response => fetchBuses())
+		}
+		e.preventDefault()
 	})
 
 	// Botón para abrir formulario para añadir un nuevo autobus
