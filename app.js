@@ -1,10 +1,13 @@
 $(document).ready(() => {
 
+	let editBus = false
+
 	// Esta funcion se ejecuta en cuanto inicia la app
 	fetchBuses()
 
 	// Listar los autobuses
 	function fetchBuses() {
+		hideFormWindow()
 		$.ajax({
 			url: 'ver_autobuses.php',
 			type: 'GET',
@@ -24,6 +27,27 @@ $(document).ready(() => {
 			}
 		})
 	}
+
+	// Crear autobus, se ejecuta cuando se envía el formulario
+	$('#buses-form').submit(e => {
+		const postData = {
+			nombre: $('#nombre').val(),
+			color: $('#color').val(),
+			capacidad: $('#capacidad').val(),
+			id: $('#idBus').val()
+		}
+
+		// Estamos creando o editando un autobus?
+		let url = !editBus ? 'alta_autobuses.php' : 'editar_autobuses.php'
+
+		$.post(url, postData, response => {
+				fetchBuses()
+				edit = false
+				$('#buses-form').trigger('reset')
+			})
+		
+		e.preventDefault()
+	})
 
 	// Editar autobus
 	$(document).on('click', '.editarBus', (e) => {
