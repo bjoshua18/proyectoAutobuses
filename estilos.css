@@ -1,215 +1,235 @@
 @charset "UTF-8";
 /* CSS Document */
 
-*{
-	margin:0;
-	padding:0;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-body{
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background:url(images/bg.jpg) no-repeat center fixed;
-	background-size:cover;
+body {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: url(images/bg.jpg) no-repeat center fixed;
+	background-size: cover;
 }
 
-header{
-	min-height:160px;
-	background:#fff;
+header {
+	min-height: 160px;
+	background: #fff;
 }
 
-header h1{
-	float:left;
-	margin-left:1em;
+header h1 {
+	float: left;
+	margin-left: 1em;
 }
 
-header img{
-	height:145px;
+header img {
+	height: 145px;
 }
 
-h2{
-	float:right;
-	color:rgba(92,178,0,1.00);
-	font-size:2.3em;
-	font-weight:lighter;
-	margin-right:5em;
-	margin-top:75px;
+h2 {
+	float: right;
+	color: rgba(92, 178, 0, 1.00);
+	font-size: 2.3em;
+	font-weight: lighter;
+	margin-right: 5em;
+	margin-top: 75px;
 }
 
-nav{
-	width:100%;
-	margin-top:-20px;
-	float:left;
-	border-bottom:3px solid rgba(98,98,98,0.30)
+nav {
+	width: 100%;
+	margin-top: -20px;
+	float: left;
+	border-bottom: 3px solid rgba(98, 98, 98, 0.30)
 }
 
-nav ul{
-	width:100%;
-	list-style:none;
+nav ul {
+	width: 100%;
+	list-style: none;
 }
 
-nav ul li{
-	width:20%;
-	float:left;
-	box-sizing:border-box;
-	border-right:1px solid #fff;
+nav ul li {
+	width: 20%;
+	float: left;
+	box-sizing: border-box;
+	border-right: 1px solid #fff;
 }
 
-nav ul li:last-child{
-	border-right:none;
+nav ul li:last-child {
+	border-right: none;
 }
 
-nav ul li a{
-	background:rgba(90,174,3,1.00);
-	color:#fff;
-	padding:0.7em 0;
-	font-size:1em;
-	display:block;
-	text-align:center;
-	text-decoration:none;
+nav ul li a {
+	background: rgba(90, 174, 3, 1.00);
+	color: #fff;
+	padding: 0.7em 0;
+	font-size: 1em;
+	display: block;
+	text-align: center;
+	text-decoration: none;
 }
 
-nav ul li a.active, nav ul li a:hover{
-	background: rgba(180,245,79,1.00);
-	color: rgba(65,65,65,1.00);
+nav ul li a.active,
+nav ul li a:hover {
+	background: rgba(180, 245, 79, 1.00);
+	color: rgba(65, 65, 65, 1.00);
 }
 
-section, form{
-	width:50%;
-	max-width:450px;
-	background:rgba(255,255,255,0.60);
-	margin:40px auto;
-	padding:1em;
-	box-sizing:border-box;
+#form-container {
+	position: fixed;
+	top: 10%;
+	width: 50%;
+	left: 25%;
 }
 
-form label, form input{
-	width:100%;
-	font-size:1em;
+section,
+form {
+	width: 50%;
+	max-width: 450px;
+	background: rgba(255, 255, 255, 0.60);
+	margin: 40px auto;
+	padding: 1em;
+	box-sizing: border-box;
 }
 
-form label{
-	color:rgba(10,75,182,1.00);
+form {
+	width: 100%;
+	background-color: rgb(45, 49, 45);
 }
 
-form input{
-	padding:0.5em 1em;
-	box-sizing:border-box;
-	margin:10px 0 20px 0;
-	color:#585858;
+form label,
+form input {
+	width: 100%;
+	font-size: 1em;
 }
 
-form input[type=submit]{
-	width:30%;
-	height:40px;
-	font-size:1em;
-	border:none;
-	background:#585858;
-	color:#fff;
-	float:right;
-	text-align:center;
-	cursor:pointer;
+form label {
+	color: white;
 }
 
-input.boton_editar{
-	float:left !important;
-	margin-left:180px;
+form input {
+	padding: 0.5em 1em;
+	box-sizing: border-box;
+	margin: 10px 0 20px 0;
+	color: #585858;
 }
 
-.clearfix{
-	clear:both;
+form input[type=submit] {
+	width: 30%;
+	height: 40px;
+	font-size: 1em;
+	border: none;
+	background: #585858;
+	color: #fff;
+	float: right;
+	text-align: center;
+	cursor: pointer;
+}
+
+input.boton_editar {
+	float: left !important;
+	margin-left: 180px;
+}
+
+.clearfix {
+	clear: both;
 }
 
 /* ALTA AUTOBUSES */
-article#autobus{
-	position:fixed;
-	width:350px;
-	bottom:20px;
-	animation-name:Autobus;
-	animation-duration:1.5s;
-	animation-iteration-count:1;
-	animation-fill-mode:forwards;
-	animation-timing-function:ease-out;
+article#autobus {
+	position: fixed;
+	width: 350px;
+	bottom: 20px;
+	animation-name: Autobus;
+	animation-duration: 1.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
 }
 
-article#autobus img{
-	width:100%;
+article#autobus img {
+	width: 100%;
 }
 
-@keyframes Autobus{
-	0%{
-		right:-400px;
+@keyframes Autobus {
+	0% {
+		right: -400px;
 	}
-	100%{
-		right:70%;
+
+	100% {
+		right: 70%;
 	}
 }
 
 
 /* VER AUTOBUSES */
 
-h3{
-	color:#fff;
-	text-align:center;
-	font-weight:lighter;
-	background:rgba(105,105,105,1.00);
-	padding:0.4em 0;
-	margin-top:30px;
-	font-size:1.3em;
-}
-h3:first-child{
-	margin-top:0;
+h3 {
+	color: #fff;
+	text-align: center;
+	font-weight: lighter;
+	background: rgba(105, 105, 105, 1.00);
+	padding: 0.4em 0;
+	margin-top: 30px;
+	font-size: 1.3em;
 }
 
-h3 span{
-	font-weight:normal;
-}
-h4{
-	font-size:1.1em;
-	font-weight:lighter;
-	margin:10px 0;
-	border-bottom:1px solid rgba(113,113,113,1.0);
-	padding-bottom:10px;
-}
-h4 span{
-	font-weight:normal;
+h3:first-child {
+	margin-top: 0;
 }
 
-article#ver_autobuses{
-	position:fixed;
-	width:300px;
-	bottom:20px;
-	left:20px;
+h3 span {
+	font-weight: normal;
 }
 
-article#ver_autobuses img{
-	width:100%;
+h4 {
+	font-size: 1.1em;
+	font-weight: lighter;
+	margin: 10px 0;
+	border-bottom: 1px solid rgba(113, 113, 113, 1.0);
+	padding-bottom: 10px;
 }
 
-.nuevobus{
-	position:fixed;
-	right:2%;
-	bottom:2%;
-	background:#fff;
-	padding:0.5em;
+h4 span {
+	font-weight: normal;
 }
 
-.editar{
-	float:right;
-	margin-right:20px;
+article#ver_autobuses {
+	position: fixed;
+	width: 300px;
+	bottom: 20px;
+	left: 20px;
 }
 
-.borrar{
-	width:25%;
-	height:40px;
-	font-size:1em;
-	border:none;
-	background:rgba(219,81,29,1.00);
-	color:#fff;
-	margin-left:1%;
-	display:block;
-	text-decoration:none;
-	text-align:center;
-	line-height:40px;
-	float:right;
-	margin-top:10px;
+article#ver_autobuses img {
+	width: 100%;
+}
+
+.nuevobus {
+	position: fixed;
+	right: 2%;
+	bottom: 2%;
+	background: #fff;
+	padding: 0.5em;
+}
+
+.editarBus {
+	float: right;
+	margin-right: 20px;
+}
+
+#btn-cancelar {
+	width: 25%;
+	height: 40px;
+	font-size: 1em;
+	border: none;
+	background: rgba(219, 81, 29, 1.00);
+	color: #fff;
+	margin-left: 1%;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	line-height: 40px;
+	float: right;
+	margin-top: 10px;
+	cursor: pointer;
 }

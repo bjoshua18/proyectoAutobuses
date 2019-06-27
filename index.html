@@ -24,7 +24,26 @@
 	</article>
 
 	<div class="nuevobus">
-		<a href="alta_autobuses.php"><img src="images/nuevobus.png" alt="Dar de alta autobus"></a>
+		<a href="#"><img src="images/nuevobus.png" alt="Dar de alta autobus"></a>
+	</div>
+
+	<div id="form-container">
+		<form method="post" action="funciones.php">
+			<input type="hidden" name="id">
+			<label for="nombre">Nombre</label>
+			<input type="text" name="nombre" id="nombre"/>
+	
+			<label for="color">Color</label>
+			<input type="text" name="color" id="color"/>
+			
+			<label for="capacidad">Capacidad</label>
+			<input type="text" name="capacidad" id="capacidad"/>
+			
+			<input type="submit" value="Guardar" name="editar" class="Guardar" />
+			<a id="btn-cancelar">Cancelar</a>
+	
+			<div class="clearfix"></div>
+		</form>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
