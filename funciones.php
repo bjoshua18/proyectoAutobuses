@@ -18,7 +18,7 @@ if(isset($_GET['borrar'])) {
 }
 
 function conexionBD($consulta) {
-	$dbLocal = new DBMySql('localhost', 'autobuses', 'kBMXc5rXGjFQEODj', 'bus', 3306, 'mysql');
+	$dbLocal = new DBMySql('localhost', 'root', '', 'bus', 3306, 'mysql');
 	$valor = $dbLocal->setQuery($consulta);
 
 	return $valor;
@@ -62,6 +62,7 @@ function altaAutobus($nombre, $color, $capacidad) {
 	header('Location:ver_autobuses.php');
 }
 
+// Para AJAX no lo utilizo
 function verAutobuses() {
 	$buses = conexionBD("SELECT * FROM autobuses");
 	
