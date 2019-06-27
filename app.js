@@ -89,6 +89,8 @@ $(document).ready(() => {
 	// Botón para cerrar ventana de formulario
 	$('#btn-cancelar').on('click', e => {
 		hideFormWindow()
+		$('#buses-form').trigger('reset')
+		editBus = false
 		e.preventDefault()
 	})
 
