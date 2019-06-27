@@ -1,5 +1,6 @@
 $(document).ready(() => {
 
+	hideFormWindow()
 	let editBus = false
 
 	// Esta funcion se ejecuta en cuanto inicia la app
@@ -53,8 +54,15 @@ $(document).ready(() => {
 	$(document).on('click', '.editarBus', (e) => {
 		let element = e.target.parentElement.parentElement.parentElement // Obtenemos el elemento que tiene el id del bus
 		let id = $(element).attr('busid')
-		$.post('editar_autobuses.php', {id}, response => {
-			// Pendiente
+		
+		$.post('mostrar_autobus.php', {id}, response => {
+			showFormWindow()
+			const bus = JSON.parse(response)
+			$('#nombre').val(bus.nombre)
+			$('#color').val(bus.color)
+			$('#capacidad').val(bus.capacidad)
+			$('#idBus').val(bus.id)
+			editBus = true
 		})
 		e.preventDefault() // Evitar recarga
 	})

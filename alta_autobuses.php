@@ -2,8 +2,7 @@
 include("funciones.php");
 
 if(isset($_POST['nombre'])) {
-	$query = "INSERT INTO autobuses (`nombre`,`color`, `capacidad`) VALUES ('{$_POST["nombre"]}', '{$_POST["color"]}', {$_POST["capacidad"]})";
-	$result = conexionBD($query);
+	$result = altaAutobus($_POST["nombre"], $_POST["color"], $_POST["capacidad"]);
 
 	if(!$result)
 		die('Consulta fallida =(');
