@@ -1,7 +1,6 @@
 <?php
 
-include("bbdd/BaseDeDatos.php");
-include("bbdd/DBMySql.php");
+include("bbdd/conexion.php");
 include("clases/Autobus.php");
 include("clases/Validacion.php");
 
@@ -18,8 +17,8 @@ if(isset($_GET['borrar'])) {
 }
 
 function conexionBD($consulta) {
-	$dbLocal = new DBMySql('localhost', 'root', '', 'bus', 3306, 'mysql');
-	$valor = $dbLocal->setQuery($consulta);
+	global $dblocal;
+	$valor = $dblocal->setQuery($consulta);
 
 	return $valor;
 }

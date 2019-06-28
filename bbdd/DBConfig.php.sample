@@ -1,0 +1,8 @@
+<?php
+
+// Configura aquí tu base de datos
+$DB_HOST = '';
+$DB_NAME = '';
+$DB_USER = '';
+$DB_PASS = '';
+$DB_PORT = 3306;

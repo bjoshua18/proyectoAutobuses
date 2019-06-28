@@ -46,9 +46,9 @@ $(document).ready(() => {
 		let url = !editBus ? 'alta_autobuses.php' : 'editar_autobuses.php'
 
 		$.post(url, postData, response => {
-				fetchBuses()
-				edit = false
-				$('#buses-form').trigger('reset')
+			fetchBuses()
+			edit = false
+			$('#buses-form').trigger('reset')
 			})
 		
 		e.preventDefault()
